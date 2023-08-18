@@ -4,19 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const responseDiv = document.getElementById('response');
 
     uploadButton.addEventListener('click', () => {
-        console.log('Uploading file...');
         const file = fileInput.files[0];
         const formData = new FormData();
 
         formData.append('file', file);
 
-        fetch('https://redgreenvision.azurewebsites.net/upload', { // Replace with your server's endpoint
+        fetch('https://redgreenvision.azurewebsites.net/upload', {
             method: 'POST',
             body: formData,
         })
         .then(response => response.text())
         .then(result => {
-            responseDiv.textContent = result; // Display the response message
+            responseDiv.textContent = result;
         })
         .catch(error => {
             responseDiv.textContent = 'An error occurred.';
