@@ -3,6 +3,36 @@
   <head>
     <title>RedGreenVision</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+      function myFunction() {
+        document.addEventListener('DOMContentLoaded', () => {
+            const uploadButton = document.getElementById('uploadButton');
+            const fileInput = document.getElementById('fileInput');
+            const responseDiv = document.getElementById('response');
+
+            uploadButton.addEventListener('click', () => {
+                console.log('Uploading file...');
+                const file = fileInput.files[0];
+                const formData = new FormData();
+
+                formData.append('file', file);
+
+                fetch('https://redgreenvision.azurewebsites.net/upload', {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => response.text())
+                .then(result => {
+                    responseDiv.textContent = result;
+                })
+                .catch(error => {
+                    responseDiv.textContent = 'An error occurred.';
+                    console.error(error);
+                });
+            });
+        });
+      }
+    </script>
   </head>
   <body>
     <h1>File Upload</h1>
