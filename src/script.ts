@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const responseDiv = document.getElementById('response');
 
     uploadButton.addEventListener('click', () => {
+        console.log('Uploading file...');
         const file = fileInput.files[0];
         const formData = new FormData();
 
