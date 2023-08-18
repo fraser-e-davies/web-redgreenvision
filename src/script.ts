@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         formData.append('file', file);
 
-        fetch('https://redgreenvision.azurewebsites.net/upload', {
+        fetch('https://redgreenvision.azurewebsites.net/upload', { // Replace with your server's endpoint
             method: 'POST',
             body: formData,
         })
